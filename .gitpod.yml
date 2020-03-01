@@ -1,5 +1,7 @@
 tasks:
-  - init: bin/setup.sh
+  - init: |
+     chmod +x bin/*
+     bin/setup.sh
   - command: bin/startup.sh
 image:
   file: .gitpod.Dockerfile
