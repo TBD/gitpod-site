@@ -16,8 +16,10 @@ MongoClient.connect("mongodb://localhost:27017/",  { useUnifiedTopology: true },
     console.log("Listening on port 3000");
 });
 
+app.use(express.static('src'))
+
 // Reuse database object in request handlers
-app.get("/", function (req, res) {
+app.get("/db", function (req, res) {
     var response = []
     db.collection("temp").find({}).toArray(function (e, d) {
         d.forEach(function (doc) { response.push(doc.text) })

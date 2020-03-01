@@ -1,0 +1,19 @@
+<html>
+
+<head>
+	<title>index.html</title>
+</head>
+
+<body>
+	<h1>hello world</h1>
+	<script>
+		fetch('/db').then(response => response.json())
+        .then(data => {
+            let h = document.querySelector("h1")
+            h.innerHTML = data
+        })
+        .catch(error => console.error(error))
+	</script>
+</body>
+
+</html>
