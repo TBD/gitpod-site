@@ -5,14 +5,20 @@
 </head>
 
 <body>
-	<h1>hello world</h1>
+	<button>db request</button>
+    <div></div>
 	<script>
-		fetch('/db').then(response => response.json())
-        .then(data => {
-            let h = document.querySelector("h1")
-            h.innerHTML = data
+        let btn = document.querySelector("button")
+        btn.addEventListener('click', function(e){
+            let start = performance.now()
+            fetch('/db').then(response => response.json())
+            .then(data => {
+                let diff = parseFloat(performance.now() - start).toFixed(2)
+                let h = document.querySelector("div")
+                h.innerHTML += `${data} ${diff}ms<br>`
+            })
+            .catch(error => console.error(error))
         })
-        .catch(error => console.error(error))
 	</script>
 </body>
 
