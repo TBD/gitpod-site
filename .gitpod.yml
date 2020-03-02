@@ -1,8 +1,7 @@
 tasks:
   - before: |
-     chmod +x bin/*
+     chmod +x bin/*.sh
      bin/setup.sh
-  - init: mongoimport --db temp --collection temp < bin/initial_data.json
   - command: bin/startup.sh
 image:
   file: .gitpod.Dockerfile
